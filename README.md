@@ -1,2 +1,2 @@
 # NeuraSpike
-All the code snippets for the blog posts are kept here. 
+This repo contains code for Computer Vision, Deep learning, and Machine Learning articles shared on my blog https://neuraspike.com/
