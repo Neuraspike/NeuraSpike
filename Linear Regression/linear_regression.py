@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 from sklearn.linear_model import LinearRegression
 
 # Defining the size of the house and converting
-# our array into an vector of rank 1
+# our array into an vector. (rank 1 array)
 x = np.array([1000, 1750, 2200])
 x = x.reshape(-1, 1)
 
