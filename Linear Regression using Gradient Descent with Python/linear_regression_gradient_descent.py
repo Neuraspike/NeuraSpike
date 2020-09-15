@@ -65,9 +65,8 @@ def main():
     auto_dataset = pd.read_csv(url_link)
 
     # selected the feature variables we are interested in
-    features_index = ["length", "width", "curb-weight", "engine-size",
-                      "horsepower", "city-mpg", "highway-mpg",
-                      "wheel-base", "bore"]
+    features_index = ["length", "width", "curb-weight", "engine-size", "bore",
+                      "horsepower", "city-mpg", "highway-mpg", "wheel-base"]
 
     # specify our feature matrix
     X = auto_dataset[features_index].values
@@ -76,11 +75,11 @@ def main():
     label_index = ["price"]
     y = auto_dataset[label_index].values
 
-    # perform data normalization
-    X = (X - X.mean()) / (X.max() - X.min())
+    # perform data standardization
+    X = (X - X.mean()) / X.std()
 
     # calls the gradient descent method
-    weight, cost_history_list = gradient_descent(X, y, alpha=0.5, epochs=1000)
+    weight, cost_history_list = gradient_descent(X, y, alpha=0.1, epochs=1000)
 
     # visualize how our cost decreases over time
     plt.plot(np.arange(len(cost_history_list)), cost_history_list)
