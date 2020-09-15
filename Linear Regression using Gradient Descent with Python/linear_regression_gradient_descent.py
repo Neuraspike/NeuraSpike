@@ -33,7 +33,7 @@ def gradient_descent(X, y, alpha=0.01, epochs=30):
         y_estimated = X.dot(W)
 
         # calculate the difference between the actual and predicted value
-        errors = y - y_estimated
+        errors = y_estimated - y
 
         # calculate the cost (Mean squared error - MSE)
         cost = (1 / 2 * m) * np.sum(errors ** 2)
@@ -41,14 +41,14 @@ def gradient_descent(X, y, alpha=0.01, epochs=30):
         # Now we need to compute the backward pass of the network,
         # where we will update our weights by taking the second
         # derivative of our loss function
-        gradient = -(1 / m) * X.T.dot(errors)
+        gradient = (1 / m) * X.T.dot(errors)
 
         # Now we have to update our weights
         W = W - alpha * gradient
 
         # Let's print out the cost to see how these values
         # changes after every 100th iteration
-        if current_iteration % 100 == 0:
+        if current_iteration % 10 == 0:
             print(f"cost:{cost} \t iteration: {current_iteration}")
 
         # keep track the cost as it changes in each iteration
@@ -58,28 +58,11 @@ def gradient_descent(X, y, alpha=0.01, epochs=30):
 
 
 def main():
-    # Link to the data
-    url_link = "https://git.io/JU4VS"
-
-    # retrieves content from the webserver
-    auto_dataset = pd.read_csv(url_link)
-
-    # selected the feature variables we are interested in
-    features_index = ["length", "width", "curb-weight", "engine-size", "bore",
-                      "horsepower", "city-mpg", "highway-mpg", "wheel-base"]
-
-    # specify our feature matrix
-    X = auto_dataset[features_index].values
-
-    # the price of the car given the features
-    label_index = ["price"]
-    y = auto_dataset[label_index].values
-
-    # perform data standardization
-    X = (X - X.mean()) / X.std()
+    X = 5 * np.random.rand(100, 5)  # specify our feature matrix
+    y = 3 * X + np.random.randn(100, 1) + 2  # target vector
 
     # calls the gradient descent method
-    weight, cost_history_list = gradient_descent(X, y, alpha=0.1, epochs=1000)
+    weight, cost_history_list = gradient_descent(X, y, alpha=0.01, epochs=100)
 
     # visualize how our cost decreases over time
     plt.plot(np.arange(len(cost_history_list)), cost_history_list)
