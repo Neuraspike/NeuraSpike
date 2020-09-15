@@ -1,7 +1,6 @@
 # import the necessary packages
 from matplotlib import pyplot as plt
 import numpy as np
-import pandas as pd
 import seaborn as sns
 
 sns.set(style='darkgrid')
@@ -21,7 +20,7 @@ def gradient_descent(X, y, alpha=0.01, epochs=30):
     n = np.shape(X)[1]  # total number of features
 
     X = np.concatenate((np.ones((m, 1)), X), axis=1)
-    W = np.random.randn(n + 1, 1)
+    W = np.random.randn(n + 1, )
 
     # stores the updates on the cost function (loss function)
     cost_history_list = []
@@ -58,8 +57,9 @@ def gradient_descent(X, y, alpha=0.01, epochs=30):
 
 
 def main():
-    X = 5 * np.random.rand(100, 5)  # specify our feature matrix
-    y = 3 * X + np.random.randn(100, 1) + 2  # target vector
+    rng = np.random.RandomState(10)
+    X = 10 * rng.rand(100, 5)  # feature matrix
+    y = 0.9 + np.dot(X, [2.2, 4., -4, 1, 2])  # target vector
 
     # calls the gradient descent method
     weight, cost_history_list = gradient_descent(X, y, alpha=0.01, epochs=100)
