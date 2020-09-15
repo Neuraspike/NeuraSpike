@@ -33,15 +33,15 @@ def gradient_descent(X, y, alpha=0.01, epochs=30):
         y_estimated = X.dot(W)
 
         # calculate the difference between the actual and predicted value
-        errors = y_estimated - y
+        error = y_estimated - y
 
         # calculate the cost (Mean squared error - MSE)
-        cost = (1 / 2 * m) * np.sum(errors ** 2)
+        cost = (1 / 2 * m) * np.sum(error ** 2)
 
         # Now we need to compute the backward pass of the network,
         # where we will update our weights by taking the second
         # derivative of our loss function
-        gradient = (1 / m) * X.T.dot(errors)
+        gradient = (1 / m) * X.T.dot(error)
 
         # Now we have to update our weights
         W = W - alpha * gradient
