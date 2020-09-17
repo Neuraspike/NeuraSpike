@@ -37,9 +37,9 @@ def gradient_descent(X, y, alpha=0.01, epochs=30):
         # calculate the cost (Mean squared error - MSE)
         cost = (1 / 2 * m) * np.sum(error ** 2)
 
-        # Now we need to compute the backward pass of the network,
-        # where we will update our weights by taking the second
-        # derivative of our loss function
+        # Update our gradient by the dot product between
+        # the transpose of 'X' and our error divided by the
+        # total number of samples
         gradient = (1 / m) * X.T.dot(error)
 
         # Now we have to update our weights
