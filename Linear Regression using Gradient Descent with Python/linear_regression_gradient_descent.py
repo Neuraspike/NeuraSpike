@@ -46,7 +46,7 @@ def gradient_descent(X, y, alpha=0.01, epochs=30):
         W = W - alpha * gradient
 
         # Let's print out the cost to see how these values
-        # changes after every 100th iteration
+        # changes after every 10th iteration
         if current_iteration % 10 == 0:
             print(f"cost:{cost} \t iteration: {current_iteration}")
 
