@@ -28,7 +28,7 @@ def gradient_descent(X, y, alpha=0.01, epochs=30):
     # iterate until the maximum number of epochs
     for current_iteration in np.arange(epochs):  # begin the process
 
-        # compute the forward pass of the network
+        # compute the dot product between our feature 'X' and weight 'W'
         y_estimated = X.dot(W)
 
         # calculate the difference between the actual and predicted value
