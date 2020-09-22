@@ -46,14 +46,19 @@ def stochastic_gradient_descent(X, y, alpha=0.01, epochs=100, batch_size=1):
     # iterate until the maximum number of epochs
     for current_iteration in np.arange(epochs):  # begin the process
 
-        batch_epoch_loss_list = []  # save the total lost/cost during each batch
-        for (X_batch, y_batch) in next_batch(X, y, batch_size):
-            batch_m = np.shape(X_batch)[0]  # current size of the feature batch
+        # save the total lost/cost during each batch
+        batch_epoch_loss_list = []
 
-            # compute the dot product between our feature 'X_batch' and weight 'W'
+        for (X_batch, y_batch) in next_batch(X, y, batch_size):
+            # current size of the feature batch
+            batch_m = np.shape(X_batch)[0]
+
+            # compute the dot product between our
+            # feature 'X_batch' and weight 'W'
             y_estimated = X_batch.dot(W)
 
-            # calculate the difference between the actual and estimated value
+            # calculate the difference between the actual
+            # and estimated value
             error = y_estimated - y_batch
 
             # get the cost (Mean squared error -MSE)
@@ -61,8 +66,8 @@ def stochastic_gradient_descent(X, y, alpha=0.01, epochs=100, batch_size=1):
 
             batch_epoch_loss_list.append(cost)  # save it to a list
 
-            # Update our gradient by the dot product between
-            # the transpose of 'X_batch' and our error divided by the
+            # Update our gradient by the dot product between the
+            # transpose of 'X_batch' and our error divided by the
             # few number of samples
             gradient = (1 / batch_m) * X_batch.T.dot(error)
 
@@ -77,7 +82,7 @@ def stochastic_gradient_descent(X, y, alpha=0.01, epochs=100, batch_size=1):
         # keep track of the cost
         cost_history_list.append(np.average(batch_epoch_loss_list))
 
-    # finally return both our weight and list of cost function changing overtime
+    # return both our weight and list of cost function changing overtime
     return W, cost_history_list
 
 
@@ -87,7 +92,8 @@ def main():
     y = 0.9 + np.dot(X, [2.2, 4., -4, 1, 2])  # target vector
 
     # calls the stochastic gradient descent method
-    weight, cost_history_list = stochastic_gradient_descent(X, y, alpha=0.001,
+    weight, cost_history_list = stochastic_gradient_descent(X, y,
+                                                            alpha=0.001,
                                                             epochs=10,
                                                             batch_size=32)
 
