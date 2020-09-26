@@ -10,7 +10,7 @@ def next_batch(features, labels, batch_size):
     """
     :param features: feature matrix
     :param labels: target vector
-    :param batch_size:  size of mini-batch
+    :param batch_size:  size of mini-batch 
     :return: a list of the current batched features and labels
     """
     batch_list = []
@@ -27,10 +27,10 @@ def stochastic_gradient_descent(X, y, alpha=0.01, epochs=100, batch_size=1):
     """
     :param X: feature vector
     :param y: target vector
-    :param alpha: learning rate (default:0.005)
+    :param alpha: learning rate (default:0.01)
     :param epochs: maximum number of iterations of the linear regression 
                          algorithm for a single run (default=100)
-    :param batch_size: the portion of the mini-batch
+    :param batch_size: the portion of the mini-batch (default:1)
     :return: weights, list of cost function changing overtime
     """
 
