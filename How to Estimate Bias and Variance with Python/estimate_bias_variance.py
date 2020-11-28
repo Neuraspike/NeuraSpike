@@ -6,7 +6,7 @@ from sklearn.datasets import fetch_california_housing
 from mlxtend.evaluate import bias_variance_decomp
 
 # preparing the dataset into inputs (feature matrix) and outputs (target vector)
-data = fetch_california_housing()  # instantiate the model
+data = fetch_california_housing()  # fetch the data
 X = data.data  # feature matrix
 y = data.target  # target vector
 
