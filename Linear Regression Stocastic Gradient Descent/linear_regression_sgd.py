@@ -13,14 +13,12 @@ def next_batch(features, labels, batch_size):
     :param batch_size:  size of mini-batch 
     :return: a list of the current batched features and labels
     """
-    batch_list = []
+ 
     # iterate though a mini batch of both our features and labels
-    for data in np.arange(start=0, stop=np.shape(features)[0], step=batch_size):
+    for data in range(0, np.shape(features)[0], batch_size):
+        
         # append the current batched features and labels in a list
-        batch_list.append((features[data: data + batch_size],
-                           labels[data: data + batch_size]))
-
-    return batch_list
+        yield (features[data: data+batch_size], labels[data: data+batch_size])
 
 
 def stochastic_gradient_descent(X, y, alpha=0.01, epochs=100, batch_size=1):
@@ -44,7 +42,7 @@ def stochastic_gradient_descent(X, y, alpha=0.01, epochs=100, batch_size=1):
     cost_history_list = []
 
     # iterate until the maximum number of epochs
-    for current_iteration in np.arange(epochs):  # begin the process
+    for current_iteration in range(epochs):  # begin the process
 
         # save the total lost/cost during each batch
         batch_epoch_loss_list = []
