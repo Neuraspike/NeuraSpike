@@ -27,7 +27,7 @@ def ridge_regression(X, y, alpha=0.01, lambda_value=1, epochs=30):
     cost_history_list = []
 
     # iterate until the maximum number of epochs
-    for current_iteration in np.arange(epochs):  # begin the process
+    for current_iteration in range(epochs):  # begin the process
 
         # compute the dot product between our feature 'X' and weight 'W'
         y_estimated = X.dot(W)
